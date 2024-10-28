@@ -1,0 +1,250 @@
+{
+  "flow_runs": [
+    {
+      "run_id": "421cfd9f-56e2-4498-9aa8-2f34b6238020_0",
+      "status": "Completed",
+      "error": null,
+      "inputs": {
+        "question": "Do other Azure AI services support this too?"
+      },
+      "output": {
+        "output": "Yes, Microsoft Azure offers a variety of AI services that support different functionalities. Some of the popular Azure AI services include:\n\n1. **Azure Machine Learning**: A cloud-based environment you can use to train, deploy, automate, manage, and track ML models.\n\n2. **Azure Cognitive Services**: A collection of APIs that allow systems to see, hear, speak, understand, and interpret human needs using natural methods of communication. This includes services for vision, speech, language, and decision-making.\n\n3. **Azure Bot Services**: Offers tools to build, test, deploy, and manage intelligent bots in a way that users can interact naturally using speech, text, or visual cues.\n\n4. **Azure Databricks**: An Apache Spark-based analytics platform optimized for the Microsoft Azure cloud services platform. Designed with the founders of Apache Spark, it integrates with Azure to provide one-click setup, streamlined workflows, and an interactive workspace.\n\n5. **Azure Cognitive Search**: An AI-powered cloud search service for mobile and web app development.\n\nThese services can be integrated with existing applications to provide AI capabilities and enhance functionality. Each service supports different aspects of AI, such as machine learning, knowledge mining, and cognitive services (like vision and speech recognition)."
+      },
+      "metrics": null,
+      "request": null,
+      "parent_run_id": "421cfd9f-56e2-4498-9aa8-2f34b6238020",
+      "root_run_id": "421cfd9f-56e2-4498-9aa8-2f34b6238020",
+      "source_run_id": null,
+      "flow_id": "default_flow_id",
+      "start_time": "2024-11-01T16:18:29.020138Z",
+      "end_time": "2024-11-01T16:18:46.470074Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "chat",
+          "type": "Flow",
+          "inputs": {
+            "question": "Do other Azure AI services support this too?"
+          },
+          "output": "Yes, Microsoft Azure offers a variety of AI services that support different functionalities. Some of the popular Azure AI services include:\n\n1. **Azure Machine Learning**: A cloud-based environment you can use to train, deploy, automate, manage, and track ML models.\n\n2. **Azure Cognitive Services**: A collection of APIs that allow systems to see, hear, speak, understand, and interpret human needs using natural methods of communication. This includes services for vision, speech, language, and decision-making.\n\n3. **Azure Bot Services**: Offers tools to build, test, deploy, and manage intelligent bots in a way that users can interact naturally using speech, text, or visual cues.\n\n4. **Azure Databricks**: An Apache Spark-based analytics platform optimized for the Microsoft Azure cloud services platform. Designed with the founders of Apache Spark, it integrates with Azure to provide one-click setup, streamlined workflows, and an interactive workspace.\n\n5. **Azure Cognitive Search**: An AI-powered cloud search service for mobile and web app development.\n\nThese services can be integrated with existing applications to provide AI capabilities and enhance functionality. Each service supports different aspects of AI, such as machine learning, knowledge mining, and cognitive services (like vision and speech recognition).",
+          "start_time": 1730474309.020338,
+          "end_time": 1730474326.469374,
+          "error": null,
+          "children": [
+            {
+              "name": "Prompty",
+              "type": "Function",
+              "inputs": {
+                "question": "Do other Azure AI services support this too?",
+                "history": [
+                  {
+                    "role": "user",
+                    "content": "Does Azure OpenAI support customer managed keys?"
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "Yes, customer managed keys are supported by Azure OpenAI."
+                  }
+                ]
+              },
+              "output": "Yes, Microsoft Azure offers a variety of AI services that support different functionalities. Some of the popular Azure AI services include:\n\n1. **Azure Machine Learning**: A cloud-based environment you can use to train, deploy, automate, manage, and track ML models.\n\n2. **Azure Cognitive Services**: A collection of APIs that allow systems to see, hear, speak, understand, and interpret human needs using natural methods of communication. This includes services for vision, speech, language, and decision-making.\n\n3. **Azure Bot Services**: Offers tools to build, test, deploy, and manage intelligent bots in a way that users can interact naturally using speech, text, or visual cues.\n\n4. **Azure Databricks**: An Apache Spark-based analytics platform optimized for the Microsoft Azure cloud services platform. Designed with the founders of Apache Spark, it integrates with Azure to provide one-click setup, streamlined workflows, and an interactive workspace.\n\n5. **Azure Cognitive Search**: An AI-powered cloud search service for mobile and web app development.\n\nThese services can be integrated with existing applications to provide AI capabilities and enhance functionality. Each service supports different aspects of AI, such as machine learning, knowledge mining, and cognitive services (like vision and speech recognition).",
+              "start_time": 1730474309.024319,
+              "end_time": 1730474326.469236,
+              "error": null,
+              "children": [
+                {
+                  "name": "convert_prompt_template",
+                  "type": "Function",
+                  "inputs": {
+                    "template": "# system:\nYou are a helpful assistant.\n\n{% for item in chat_history %}\n# user:\n{{item.inputs.question}}\n# assistant:\n{{item.outputs.answer}}\n{% endfor %}\n\nuser:\n{{question}}\n\n\n\n",
+                    "inputs": {
+                      "question": "Do other Azure AI services support this too?",
+                      "history": [
+                        {
+                          "role": "user",
+                          "content": "Does Azure OpenAI support customer managed keys?"
+                        },
+                        {
+                          "role": "assistant",
+                          "content": "Yes, customer managed keys are supported by Azure OpenAI."
+                        }
+                      ]
+                    }
+                  },
+                  "output": [
+                    {
+                      "role": "system",
+                      "content": "You are a helpful assistant."
+                    },
+                    {
+                      "role": "user",
+                      "content": "Do other Azure AI services support this too?"
+                    }
+                  ],
+                  "start_time": 1730474309.024807,
+                  "end_time": 1730474309.026758,
+                  "error": null,
+                  "children": [],
+                  "node_name": null,
+                  "parent_id": "fd690b8a-34ea-4b02-b110-710b6c158dad",
+                  "id": "e9848c84-eeaa-4cf0-a33c-e7bdcb1ee0e5",
+                  "function": "convert_prompt_template",
+                  "system_metrics": {}
+                },
+                {
+                  "name": "openai_chat",
+                  "type": "LLM",
+                  "inputs": {
+                    "temperature": 0.2,
+                    "max_tokens": 1024,
+                    "model": "gpt-35-turbo",
+                    "messages": [
+                      {
+                        "role": "system",
+                        "content": "You are a helpful assistant."
+                      },
+                      {
+                        "role": "user",
+                        "content": "Do other Azure AI services support this too?"
+                      }
+                    ]
+                  },
+                  "output": {
+                    "id": "chatcmpl-AOodxlNCfq5VPZCsiirmRPCDlB5Ak",
+                    "choices": [
+                      {
+                        "finish_reason": "stop",
+                        "index": 0,
+                        "logprobs": null,
+                        "message": {
+                          "content": "Yes, Microsoft Azure offers a variety of AI services that support different functionalities. Some of the popular Azure AI services include:\n\n1. **Azure Machine Learning**: A cloud-based environment you can use to train, deploy, automate, manage, and track ML models.\n\n2. **Azure Cognitive Services**: A collection of APIs that allow systems to see, hear, speak, understand, and interpret human needs using natural methods of communication. This includes services for vision, speech, language, and decision-making.\n\n3. **Azure Bot Services**: Offers tools to build, test, deploy, and manage intelligent bots in a way that users can interact naturally using speech, text, or visual cues.\n\n4. **Azure Databricks**: An Apache Spark-based analytics platform optimized for the Microsoft Azure cloud services platform. Designed with the founders of Apache Spark, it integrates with Azure to provide one-click setup, streamlined workflows, and an interactive workspace.\n\n5. **Azure Cognitive Search**: An AI-powered cloud search service for mobile and web app development.\n\nThese services can be integrated with existing applications to provide AI capabilities and enhance functionality. Each service supports different aspects of AI, such as machine learning, knowledge mining, and cognitive services (like vision and speech recognition).",
+                          "refusal": null,
+                          "role": "assistant",
+                          "audio": null,
+                          "function_call": null,
+                          "tool_calls": null
+                        },
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "protected_material_code": {
+                            "filtered": false,
+                            "detected": false
+                          },
+                          "protected_material_text": {
+                            "filtered": false,
+                            "detected": false
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ],
+                    "created": 1730477909,
+                    "model": "gpt-4-turbo-2024-04-09",
+                    "object": "chat.completion",
+                    "service_tier": null,
+                    "system_fingerprint": "fp_5b26d85e12",
+                    "usage": {
+                      "completion_tokens": 247,
+                      "prompt_tokens": 26,
+                      "total_tokens": 273,
+                      "completion_tokens_details": null,
+                      "prompt_tokens_details": null
+                    },
+                    "prompt_filter_results": [
+                      {
+                        "prompt_index": 0,
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "jailbreak": {
+                            "filtered": false,
+                            "detected": false
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "start_time": 1730474309.033038,
+                  "end_time": 1730474326.468998,
+                  "error": null,
+                  "children": [],
+                  "node_name": null,
+                  "parent_id": "fd690b8a-34ea-4b02-b110-710b6c158dad",
+                  "id": "a0d1c3f1-0c4b-4dbb-a18a-a98a23c1b1c2",
+                  "function": "openai.resources.chat.completions.Completions.create",
+                  "system_metrics": {
+                    "completion_tokens": 247,
+                    "prompt_tokens": 26,
+                    "total_tokens": 273
+                  }
+                }
+              ],
+              "node_name": null,
+              "parent_id": "5a8f30ab-7c26-4779-b22e-ad42ba3887c9",
+              "id": "fd690b8a-34ea-4b02-b110-710b6c158dad",
+              "function": "Prompty",
+              "system_metrics": {
+                "completion_tokens": 247,
+                "prompt_tokens": 26,
+                "total_tokens": 273
+              }
+            }
+          ],
+          "node_name": null,
+          "parent_id": "",
+          "id": "5a8f30ab-7c26-4779-b22e-ad42ba3887c9",
+          "function": "chat",
+          "system_metrics": {
+            "completion_tokens": 247,
+            "prompt_tokens": 26,
+            "total_tokens": 273
+          }
+        }
+      ],
+      "name": "",
+      "description": "",
+      "tags": null,
+      "system_metrics": {
+        "completion_tokens": 247,
+        "prompt_tokens": 26,
+        "total_tokens": 273,
+        "duration": 17.449936
+      },
+      "result": {
+        "output": "Yes, Microsoft Azure offers a variety of AI services that support different functionalities. Some of the popular Azure AI services include:\n\n1. **Azure Machine Learning**: A cloud-based environment you can use to train, deploy, automate, manage, and track ML models.\n\n2. **Azure Cognitive Services**: A collection of APIs that allow systems to see, hear, speak, understand, and interpret human needs using natural methods of communication. This includes services for vision, speech, language, and decision-making.\n\n3. **Azure Bot Services**: Offers tools to build, test, deploy, and manage intelligent bots in a way that users can interact naturally using speech, text, or visual cues.\n\n4. **Azure Databricks**: An Apache Spark-based analytics platform optimized for the Microsoft Azure cloud services platform. Designed with the founders of Apache Spark, it integrates with Azure to provide one-click setup, streamlined workflows, and an interactive workspace.\n\n5. **Azure Cognitive Search**: An AI-powered cloud search service for mobile and web app development.\n\nThese services can be integrated with existing applications to provide AI capabilities and enhance functionality. Each service supports different aspects of AI, such as machine learning, knowledge mining, and cognitive services (like vision and speech recognition)."
+      },
+      "upload_metrics": false,
+      "otel_trace_id": "0x63852bf682d0be6002d7a6d1aca3ebc4",
+      "message_format": "basic"
+    }
+  ],
+  "node_runs": []
+}

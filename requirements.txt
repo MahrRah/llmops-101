@@ -1,0 +1,6 @@
+ipython
+jupyter
+python-dotenv
+
+black
+isort
